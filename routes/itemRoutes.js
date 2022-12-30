@@ -14,7 +14,8 @@ router.post('/stockItem/post', async (req, res) => {
         unitPrice: req.body.unitPrice,
         annualInterestPerItem: req.body.annualInterestPerItem,
         unitHoldingCost: req.body.unitHoldingCost,
-        deliveryTime: req.body.deliveryTime
+        deliveryTime: req.body.deliveryTime,
+        amount: req.body.amount
     })
 
     try {

@@ -3,28 +3,22 @@ const PurchasesHistory = require('../models/purchasesHistory');
 
 const router = express.Router()
 
-// //Post Method
-// router.post('/stockItem/post', async (req, res) => {
-//     const data = new StockItem({
-//         name: req.body.name,
-//         myId: req.body.myId,
-//         demandRateForYear: req.body.demandRateForYear,
-//         description: req.body.description,
-//         orderCost: req.body.orderCost,
-//         unitPrice: req.body.unitPrice,
-//         annualInterestPerItem: req.body.annualInterestPerItem,
-//         unitHoldingCost: req.body.unitHoldingCost,
-//         deliveryTime: req.body.deliveryTime
-//     })
+//Post Method
+router.post('/purchasesHistory/post', async (req, res) => {
+    const data = new PurchasesHistory({
+        itemName: req.body.itemName,
+        date: req.body.date,
+        amount: req.body.amount
+    })
 
-//     try {
-//         const dataToSave = await data.save();
-//         res.status(200).json(dataToSave)
-//     }
-//     catch (error) {
-//         res.status(400).json({message: error.message})
-//     }
-// })
+    try {
+        const dataToSave = await data.save();
+        res.status(200).json(dataToSave)
+    }
+    catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
 
 //Get all Method
 router.get('/purchasesHistory/getAll', async (req, res) => {
