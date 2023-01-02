@@ -37,6 +37,10 @@ const stockItem = new mongoose.Schema({
         required: true,
         type: Number
     },
+    amount: {
+        required: true,
+        type: Number
+    },
 })
 
 module.exports = mongoose.model('StockItem', stockItem)
