@@ -54,12 +54,11 @@ router.put('/stockItem/update/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
-        const options = { new: true };
 
         const result = await StockItem.findByIdAndUpdate(
-            id, updatedData, options
+            id, updatedData
         )
-
+            
         res.send(result)
     }
     catch (error) {
