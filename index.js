@@ -20,9 +20,11 @@ app.use(cors())
 app.use(express.json());
 
 const itemRoutes = require('./routes/itemRoutes');
+const mailRoutes = require('./routes/mailRoutes');
 const purchasesHistoryRoutes = require('./routes/purchasesHistoryRoutes');
 
 app.use('/api', itemRoutes);
+app.use('/api', mailRoutes);
 app.use('/api', purchasesHistoryRoutes);
 
 app.listen(5000, () => {
