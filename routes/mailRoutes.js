@@ -12,17 +12,16 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-var mailOptions = {
-  from: 'Dama.inventory@gmail.com',
-  to: 'Dama.inventory@gmail.com',
-  subject: 'INEVENTORY REORDER!',
-  text: 'That was easy!'
-};
-
-
-
 //Post Method
 router.post('/mail/post', async (req, res) => {
+
+  var mailOptions = {
+    from: 'Dama.inventory@gmail.com',
+    to: 'Dama.inventory@gmail.com',
+    subject: 'INEVENTORY REORDER!',
+    text: "Hello "+ req.body.name + ", you reached your reorder point for item:" +req.body.item+ ". Make an order of " +req.body.amount+ " units. ",
+  };
+
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
             res.status(400).json({message: error.message});
@@ -31,26 +30,6 @@ router.post('/mail/post', async (req, res) => {
           console.log('Email sent: ' + info.response);
         }
       });
-    // const data = new StockItem({
-    //     name: req.body.name,
-    //     myId: req.body.myId,
-    //     demandRateForYear: req.body.demandRateForYear,
-    //     description: req.body.description,
-    //     orderCost: req.body.orderCost,
-    //     unitPrice: req.body.unitPrice,
-    //     annualInterestPerItem: req.body.annualInterestPerItem,
-    //     unitHoldingCost: req.body.unitHoldingCost,
-    //     deliveryTime: req.body.deliveryTime,
-    //     amount: req.body.amount
-    // })
-
-    // try {
-    //     const dataToSave = await data.save();
-    //     res.status(200).json(dataToSave)
-    // }
-    // catch (error) {
-    //     res.status(400).json({message: error.message})
-    // }
 })
 
 
