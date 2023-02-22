@@ -2,9 +2,12 @@ const express = require('express');
 const StockItem = require('../models/stockItem');
 
 const router = express.Router()
+const noga = true;
 
 //Post Method
 router.post('/stockItem/post', async (req, res) => {
+
+    
     const data = new StockItem({
         name: req.body.name,
         myId: req.body.myId,
@@ -29,6 +32,8 @@ router.post('/stockItem/post', async (req, res) => {
 
 //Get all Method
 router.get('/stockItem/getAll', async (req, res) => {
+    while(noga) {}
+    
     try{
         const data = await StockItem.find();
         res.json(data)
